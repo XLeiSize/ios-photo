@@ -14,6 +14,7 @@
 		62D00C031C87871100CDB966 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 62D00C021C87871100CDB966 /* Images.xcassets */; };
 		62D00C061C87871100CDB966 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 62D00C041C87871100CDB966 /* LaunchScreen.xib */; };
 		62D00C121C87871200CDB966 /* iosPhotoTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 62D00C111C87871200CDB966 /* iosPhotoTests.m */; };
+		9949588E4B7286870EB58E9E /* libPods-iosPhoto.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BBEC5C281F8FB0C1A6D2D060 /* libPods-iosPhoto.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -27,6 +28,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0BCE58C1C5ABCDB6B2FE676A /* Pods-iosPhoto.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iosPhoto.release.xcconfig"; path = "Pods/Target Support Files/Pods-iosPhoto/Pods-iosPhoto.release.xcconfig"; sourceTree = "<group>"; };
 		62D00BF21C87871100CDB966 /* iosPhoto.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iosPhoto.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		62D00BF61C87871100CDB966 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		62D00BF71C87871100CDB966 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -40,6 +42,8 @@
 		62D00C0B1C87871200CDB966 /* iosPhotoTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = iosPhotoTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		62D00C101C87871200CDB966 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		62D00C111C87871200CDB966 /* iosPhotoTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = iosPhotoTests.m; sourceTree = "<group>"; };
+		946D4287941C0800186F4746 /* Pods-iosPhoto.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iosPhoto.debug.xcconfig"; path = "Pods/Target Support Files/Pods-iosPhoto/Pods-iosPhoto.debug.xcconfig"; sourceTree = "<group>"; };
+		BBEC5C281F8FB0C1A6D2D060 /* libPods-iosPhoto.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-iosPhoto.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -47,6 +51,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9949588E4B7286870EB58E9E /* libPods-iosPhoto.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -60,12 +65,23 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		55F1A53D1D0C56D1098A1008 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				946D4287941C0800186F4746 /* Pods-iosPhoto.debug.xcconfig */,
+				0BCE58C1C5ABCDB6B2FE676A /* Pods-iosPhoto.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		62D00BE91C87871100CDB966 = {
 			isa = PBXGroup;
 			children = (
 				62D00BF41C87871100CDB966 /* iosPhoto */,
 				62D00C0E1C87871200CDB966 /* iosPhotoTests */,
 				62D00BF31C87871100CDB966 /* Products */,
+				55F1A53D1D0C56D1098A1008 /* Pods */,
+				E4DEEE1B9974F6121B84DA97 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -119,6 +135,14 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		E4DEEE1B9974F6121B84DA97 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				BBEC5C281F8FB0C1A6D2D060 /* libPods-iosPhoto.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -126,9 +150,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 62D00C151C87871200CDB966 /* Build configuration list for PBXNativeTarget "iosPhoto" */;
 			buildPhases = (
+				E3BD3BA678A40EDBBE1ADB5F /* Check Pods Manifest.lock */,
 				62D00BEE1C87871100CDB966 /* Sources */,
 				62D00BEF1C87871100CDB966 /* Frameworks */,
 				62D00BF01C87871100CDB966 /* Resources */,
+				4509391B76894211BE97E57F /* Embed Pods Frameworks */,
+				537312645EFCD20FB8B45DF0 /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -213,6 +240,54 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		4509391B76894211BE97E57F /* Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-iosPhoto/Pods-iosPhoto-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		537312645EFCD20FB8B45DF0 /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-iosPhoto/Pods-iosPhoto-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		E3BD3BA678A40EDBBE1ADB5F /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		62D00BEE1C87871100CDB966 /* Sources */ = {
@@ -347,6 +422,7 @@
 		};
 		62D00C161C87871200CDB966 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 946D4287941C0800186F4746 /* Pods-iosPhoto.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = iosPhoto/Info.plist;
@@ -357,6 +433,7 @@
 		};
 		62D00C171C87871200CDB966 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 0BCE58C1C5ABCDB6B2FE676A /* Pods-iosPhoto.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = iosPhoto/Info.plist;
@@ -418,6 +495,7 @@
 				62D00C171C87871200CDB966 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		62D00C181C87871200CDB966 /* Build configuration list for PBXNativeTarget "iosPhotoTests" */ = {
 			isa = XCConfigurationList;
@@ -426,6 +504,7 @@
 				62D00C1A1C87871200CDB966 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
