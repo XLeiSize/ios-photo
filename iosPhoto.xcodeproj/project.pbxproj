@@ -14,6 +14,7 @@
 		62D00C031C87871100CDB966 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 62D00C021C87871100CDB966 /* Images.xcassets */; };
 		62D00C061C87871100CDB966 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 62D00C041C87871100CDB966 /* LaunchScreen.xib */; };
 		62D00C121C87871200CDB966 /* iosPhotoTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 62D00C111C87871200CDB966 /* iosPhotoTests.m */; };
+		7A92A97F1CA03C9C0011C916 /* ShibaView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A92A97E1CA03C9C0011C916 /* ShibaView.m */; };
 		9949588E4B7286870EB58E9E /* libPods-iosPhoto.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BBEC5C281F8FB0C1A6D2D060 /* libPods-iosPhoto.a */; };
 /* End PBXBuildFile section */
 
@@ -42,6 +43,8 @@
 		62D00C0B1C87871200CDB966 /* iosPhotoTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = iosPhotoTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		62D00C101C87871200CDB966 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		62D00C111C87871200CDB966 /* iosPhotoTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = iosPhotoTests.m; sourceTree = "<group>"; };
+		7A92A97D1CA03C9C0011C916 /* ShibaView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShibaView.h; sourceTree = "<group>"; };
+		7A92A97E1CA03C9C0011C916 /* ShibaView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShibaView.m; sourceTree = "<group>"; };
 		946D4287941C0800186F4746 /* Pods-iosPhoto.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iosPhoto.debug.xcconfig"; path = "Pods/Target Support Files/Pods-iosPhoto/Pods-iosPhoto.debug.xcconfig"; sourceTree = "<group>"; };
 		BBEC5C281F8FB0C1A6D2D060 /* libPods-iosPhoto.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-iosPhoto.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -102,6 +105,8 @@
 				62D00BFC1C87871100CDB966 /* ViewController.h */,
 				62D00BFD1C87871100CDB966 /* ViewController.m */,
 				62D00BFF1C87871100CDB966 /* Main.storyboard */,
+				7A92A97D1CA03C9C0011C916 /* ShibaView.h */,
+				7A92A97E1CA03C9C0011C916 /* ShibaView.m */,
 				62D00C021C87871100CDB966 /* Images.xcassets */,
 				62D00C041C87871100CDB966 /* LaunchScreen.xib */,
 				62D00BF51C87871100CDB966 /* Supporting Files */,
@@ -190,11 +195,12 @@
 		62D00BEA1C87871100CDB966 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0630;
+				LastUpgradeCheck = 0720;
 				ORGANIZATIONNAME = "XING Lei";
 				TargetAttributes = {
 					62D00BF11C87871100CDB966 = {
 						CreatedOnToolsVersion = 6.3;
+						DevelopmentTeam = ES3QL9KBN7;
 					};
 					62D00C0A1C87871200CDB966 = {
 						CreatedOnToolsVersion = 6.3;
@@ -294,6 +300,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7A92A97F1CA03C9C0011C916 /* ShibaView.m in Sources */,
 				62D00BFE1C87871100CDB966 /* ViewController.m in Sources */,
 				62D00BFB1C87871100CDB966 /* AppDelegate.m in Sources */,
 				62D00BF81C87871100CDB966 /* main.m in Sources */,
@@ -359,6 +366,7 @@
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -414,6 +422,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
 				MTL_ENABLE_DEBUG_INFO = NO;
+				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
@@ -425,9 +434,13 @@
 			baseConfigurationReference = 946D4287941C0800186F4746 /* Pods-iosPhoto.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = iosPhoto/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = dev.gobelins.shibagram;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Debug;
 		};
@@ -436,9 +449,13 @@
 			baseConfigurationReference = 0BCE58C1C5ABCDB6B2FE676A /* Pods-iosPhoto.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = iosPhoto/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = dev.gobelins.shibagram;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Release;
 		};
@@ -456,6 +473,7 @@
 				);
 				INFOPLIST_FILE = iosPhotoTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "dev.gobelins.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/iosPhoto.app/iosPhoto";
 			};
@@ -471,6 +489,7 @@
 				);
 				INFOPLIST_FILE = iosPhotoTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "dev.gobelins.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/iosPhoto.app/iosPhoto";
 			};
