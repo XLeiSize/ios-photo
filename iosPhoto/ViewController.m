@@ -80,7 +80,6 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    NSLog(@"hey %lu",(unsigned long)self.datasource.count);
     return self.datasource.count;
 }
 
@@ -112,12 +111,18 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+/*
+- (IBAction)shibaAction:(UIStoryboardSegue*)segue {
+    ShibaView* sv = [self.storyboard instantiateViewControllerWithIdentifier:@"shibaView"];
+    sv.delegate = self;
+    [self.navigationController presentViewController:sv animated:YES completion:nil];
+}
+*/
+- (IBAction)shibaDone:(UIStoryboardSegue*)segue {
+    ShibaView* shibaView = (ShibaView*)segue.sourceViewController;
+    [shibaView validate];
+}
 
-//- (IBAction)shibaAction:(id)sender {
-//    ShibaView* sv = [self.storyboard instantiateViewControllerWithIdentifier:@"shibaView"];
-//    sv.delegate = self;
-//    [self.navigationController presentViewController:sv animated:YES completion:nil];
-//}
 
 - (void)shibaDidEnd{
     [self.navigationController dismissViewControllerAnimated:YES completion:nil];

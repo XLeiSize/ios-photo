@@ -18,4 +18,7 @@
 @property (strong, nonatomic) IBOutlet UIImageView *imageOverlayView;
 extern BOOL firstTime;
 extern BOOL isFront;
+
+- (void)validate;
+
 @end

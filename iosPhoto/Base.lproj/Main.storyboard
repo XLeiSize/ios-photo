@@ -126,11 +126,23 @@
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="p92-b5-bd9">
                                 <rect key="frame" x="0.0" y="0.0" width="324" height="568"/>
                             </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="myb-2O-8Fd">
+                                <rect key="frame" x="120" y="448" width="80" height="80"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="80" id="eaY-BB-8sP"/>
+                                    <constraint firstAttribute="width" constant="80" id="iEP-6o-Vqf"/>
+                                </constraints>
+                                <connections>
+                                    <segue destination="MOp-aE-BEG" kind="unwind" unwindAction="shibaDone:" id="sya-iH-IgQ"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="0.0" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="cir-vS-oZQ" firstAttribute="width" secondItem="mQS-Mi-POf" secondAttribute="width" id="HF9-cx-qQZ"/>
+                            <constraint firstItem="dm8-B9-ccV" firstAttribute="top" secondItem="myb-2O-8Fd" secondAttribute="bottom" constant="40" id="JPX-hP-lg6"/>
                             <constraint firstItem="cir-vS-oZQ" firstAttribute="height" secondItem="mQS-Mi-POf" secondAttribute="height" id="PmO-h9-6sW"/>
+                            <constraint firstItem="myb-2O-8Fd" firstAttribute="centerX" secondItem="mQS-Mi-POf" secondAttribute="centerX" id="fWc-eA-7Fc"/>
                             <constraint firstItem="p92-b5-bd9" firstAttribute="height" secondItem="mQS-Mi-POf" secondAttribute="height" id="j0O-vT-YOX"/>
                             <constraint firstItem="p92-b5-bd9" firstAttribute="width" secondItem="mQS-Mi-POf" secondAttribute="width" id="j9G-Mm-Zqy"/>
                         </constraints>
@@ -141,6 +153,7 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="f7w-R9-4rz" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="MOp-aE-BEG" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="130" y="1001"/>
         </scene>

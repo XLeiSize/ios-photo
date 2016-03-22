@@ -198,7 +198,13 @@ BOOL isFront;
 }
 
 - (void)backHome {
+    firstTime = false;
     NSLog(@"back home");
+    
+    [self.picker dismissViewControllerAnimated:NO completion:nil];
+    [self dismissViewControllerAnimated:NO completion:nil];
+    
+    
 }
 
 - (void)back {
