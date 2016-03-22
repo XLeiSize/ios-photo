@@ -8,6 +8,11 @@
 
 #import <UIKit/UIKit.h>
 #import <Firebase/Firebase.h>
+@protocol ShibaDelegate <NSObject>
+
+- (void)shibaDidEnd;
+
+@end
 @interface ShibaView : UIViewController <UIImagePickerControllerDelegate, UINavigationControllerDelegate>
 @property (strong, nonatomic) IBOutlet UIImageView *imageView;
 @property (strong, nonatomic) IBOutlet UIImageView *imageOverlayView;

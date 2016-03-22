@@ -5,6 +5,7 @@
 
 target 'iosPhoto' do
 pod 'Firebase', '>= 2.5.0'
+pod 'SDWebImage'
 end
 
 target 'iosPhotoTests' do

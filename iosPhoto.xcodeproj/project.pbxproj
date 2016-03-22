@@ -16,6 +16,8 @@
 		62D00C121C87871200CDB966 /* iosPhotoTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 62D00C111C87871200CDB966 /* iosPhotoTests.m */; };
 		7A92A97F1CA03C9C0011C916 /* ShibaView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A92A97E1CA03C9C0011C916 /* ShibaView.m */; };
 		9949588E4B7286870EB58E9E /* libPods-iosPhoto.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BBEC5C281F8FB0C1A6D2D060 /* libPods-iosPhoto.a */; };
+		BFECF6F81CA1431000758F38 /* ShibaCellTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BFECF6F71CA1431000758F38 /* ShibaCellTableViewCell.m */; };
+		BFECF6FB1CA143A000758F38 /* Shiba.m in Sources */ = {isa = PBXBuildFile; fileRef = BFECF6FA1CA143A000758F38 /* Shiba.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,6 +49,10 @@
 		7A92A97E1CA03C9C0011C916 /* ShibaView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShibaView.m; sourceTree = "<group>"; };
 		946D4287941C0800186F4746 /* Pods-iosPhoto.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iosPhoto.debug.xcconfig"; path = "Pods/Target Support Files/Pods-iosPhoto/Pods-iosPhoto.debug.xcconfig"; sourceTree = "<group>"; };
 		BBEC5C281F8FB0C1A6D2D060 /* libPods-iosPhoto.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-iosPhoto.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		BFECF6F61CA1431000758F38 /* ShibaCellTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShibaCellTableViewCell.h; sourceTree = "<group>"; };
+		BFECF6F71CA1431000758F38 /* ShibaCellTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShibaCellTableViewCell.m; sourceTree = "<group>"; };
+		BFECF6F91CA143A000758F38 /* Shiba.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Shiba.h; sourceTree = "<group>"; };
+		BFECF6FA1CA143A000758F38 /* Shiba.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Shiba.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -105,6 +111,10 @@
 				62D00BFC1C87871100CDB966 /* ViewController.h */,
 				62D00BFD1C87871100CDB966 /* ViewController.m */,
 				62D00BFF1C87871100CDB966 /* Main.storyboard */,
+				BFECF6F61CA1431000758F38 /* ShibaCellTableViewCell.h */,
+				BFECF6F71CA1431000758F38 /* ShibaCellTableViewCell.m */,
+				BFECF6F91CA143A000758F38 /* Shiba.h */,
+				BFECF6FA1CA143A000758F38 /* Shiba.m */,
 				7A92A97D1CA03C9C0011C916 /* ShibaView.h */,
 				7A92A97E1CA03C9C0011C916 /* ShibaView.m */,
 				62D00C021C87871100CDB966 /* Images.xcassets */,
@@ -200,7 +210,7 @@
 				TargetAttributes = {
 					62D00BF11C87871100CDB966 = {
 						CreatedOnToolsVersion = 6.3;
-						DevelopmentTeam = ES3QL9KBN7;
+						DevelopmentTeam = Q9CRH2MVNV;
 					};
 					62D00C0A1C87871200CDB966 = {
 						CreatedOnToolsVersion = 6.3;
@@ -300,8 +310,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BFECF6F81CA1431000758F38 /* ShibaCellTableViewCell.m in Sources */,
 				7A92A97F1CA03C9C0011C916 /* ShibaView.m in Sources */,
 				62D00BFE1C87871100CDB966 /* ViewController.m in Sources */,
+				BFECF6FB1CA143A000758F38 /* Shiba.m in Sources */,
 				62D00BFB1C87871100CDB966 /* AppDelegate.m in Sources */,
 				62D00BF81C87871100CDB966 /* main.m in Sources */,
 			);
@@ -438,7 +450,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = iosPhoto/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = dev.gobelins.shibagram;
+				PRODUCT_BUNDLE_IDENTIFIER = dev.gobelins.iosPhoto;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 			};
@@ -453,7 +465,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = iosPhoto/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = dev.gobelins.shibagram;
+				PRODUCT_BUNDLE_IDENTIFIER = dev.gobelins.iosPhoto;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 			};
