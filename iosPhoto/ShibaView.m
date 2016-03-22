@@ -201,7 +201,7 @@ BOOL isFront;
     firstTime = false;
     NSLog(@"back home");
     
-    [self.picker dismissViewControllerAnimated:NO completion:nil];
+    [self.picker dismissViewControllerAnimated:YES completion:nil];
     [self dismissViewControllerAnimated:NO completion:nil];
     
     
