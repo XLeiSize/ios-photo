@@ -10,4 +10,3 @@ end
 target 'iosPhotoTests' do
 
 end
-
