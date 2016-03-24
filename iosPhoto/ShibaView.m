@@ -9,6 +9,7 @@
 #import "ShibaView.h"
 #import "ViewController.h"
 #import <QuartzCore/QuartzCore.h>
+#import "NSStrinAdditions.h"
 BOOL firstTime;
 BOOL isFront;
 @interface ShibaView ()
@@ -229,12 +230,13 @@ BOOL isFront;
     UIGraphicsEndImageContext();
     UIImageWriteToSavedPhotosAlbum(finalImage, nil, nil, nil);
 
-    NSString *imageString = [self encodeToBase64String:finalImage];
-    [self sendData:imageString];
+    [self sendData:finalImage];
 }
 
-- (void)sendData:(NSString *)imageString {
+- (void)sendData:(UIImage *)uploadImage {
     Firebase *ref = [[Firebase alloc] initWithUrl:@"https://torrid-torch-679.firebaseio.com/ios/shibagram/shibas"];
+    NSData *imageData = UIImageJPEGRepresentation(uploadImage, 0.9);
+    NSString *imageString = [NSString base64StringFromData:imageData length:[imageData length]];
     NSString *uuid = [NSUUID UUID].UUIDString;
     NSDictionary *shiba = @{
                             @"dislikes": @"0",
@@ -244,10 +246,6 @@ BOOL isFront;
     Firebase *shibasRef = [ref childByAppendingPath: uuid];
 
     [shibasRef setValue: shiba];
-}
-
-- (NSString *)encodeToBase64String:(UIImage *)image {
-    return [UIImagePNGRepresentation(image) base64EncodedStringWithOptions:NSDataBase64EncodingEndLineWithCarriageReturn];
 }
 
 - (void)didReceiveMemoryWarning {
