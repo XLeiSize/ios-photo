@@ -11,6 +11,7 @@
 #import "ShibaView.h"
 #import "ShibaCellTableViewCell.h"
 #import <SDWebImage/UIImageView+WebCache.h>
+#import "NSStrinAdditions.h"
 
 @interface ViewController () <UITableViewDataSource, UITableViewDelegate, ShibaDelegate>
 
@@ -26,18 +27,37 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    UIButton *shibaButton;
-    shibaButton.layer.cornerRadius = 30;
-    shibaButton.layer.borderWidth = 2;
-    shibaButton.layer.borderColor = [UIColor colorWithRed:226.0/255.0 green:122.0/255.0 blue:63.0/255.0 alpha:1].CGColor;
-    shibaButton.clipsToBounds = YES;
     
+    UIImage *img = [UIImage imageNamed:@"shiba-logo.png"];
+    UIImageView *imgView = [[UIImageView alloc] initWithFrame:CGRectMake(5, 5, 30, 30)];
+    [imgView setImage:img];
+    [imgView setContentMode:UIViewContentModeScaleAspectFit];
+    self.navigationItem.titleView = imgView;
     
-    self.title = @"Shibagram";
+    self.tableView.allowsSelection = NO;
+    self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     
+    self.shibaButton.frame = CGRectMake(0.0, 0.0, 100.0, 100.0);
+    self.shibaButton.layer.cornerRadius = 50;
+    self.shibaButton.layer.borderWidth = 5;
+    self.shibaButton.layer.borderColor = [UIColor colorWithRed:226.0/255.0 green:122.0/255.0 blue:63.0/255.0 alpha:1].CGColor;
+    self.shibaButton.clipsToBounds = YES;
+    
+    UIImageView *shibaIcon = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"shiba-transparent"]];
+    shibaIcon.frame = CGRectMake(15, 15, 70, 70);
+    shibaIcon.contentMode=UIViewContentModeScaleAspectFill;
+    [self.shibaButton addSubview:shibaIcon];
+     
     self.datasource = [NSMutableArray array];
     
     [self requestsShibas];
+    Firebase *ref = [[Firebase alloc] initWithUrl: @"https://torrid-torch-679.firebaseio.com/ios/shibagram/shibas"];
+    [ref observeEventType:FEventTypeChildAdded withBlock:^(FDataSnapshot *snapshot) {
+
+        [self.tableView reloadData];
+        self.tableView.contentOffset = CGPointMake(0, 0 - self.tableView.contentInset.top);
+        
+    }];
 }
 
 - (void)viewDidAppear:(BOOL)animated{
@@ -45,6 +65,9 @@
     
     
 }
+
+#pragma DATA LOADING
+
 
 //LOAD DATA URL
 - (void)requestsShibas {
@@ -54,15 +77,15 @@
     // Retrieve new posts as they are added to the database
     [ref observeEventType:FEventTypeChildAdded withBlock:^(FDataSnapshot *snapshot) {
         
-        Shiba *shiba = [[Shiba alloc] initWithUUID:snapshot.key imgURL:snapshot.value[@"imgURL"] likes:snapshot.value[@"likes"] dislikes:snapshot.value[@"dislikes"] description:snapshot.value[@"description"]];
-        [self.datasource addObject:shiba];
-        
+        Shiba *shiba = [[Shiba alloc] initWithUUID:snapshot.key imgURL:snapshot.value[@"imgURL"] likes:snapshot.value[@"likes"] dislikes:snapshot.value[@"dislikes"] dateTime:snapshot.value[@"dateTime"]];
+        [self.datasource insertObject:shiba atIndex:0];
+
     }];
     
     [ref observeSingleEventOfType:FEventTypeValue withBlock:^(FDataSnapshot *snapshot) {
         NSLog(@"reload : %lu",(unsigned long)self.datasource.count);
-        [self.tableView reloadData];
         
+        [self.tableView reloadData];
         [UIView animateWithDuration:0.5 animations:^{
             self.activityIndicator.hidden = YES;
             self.tableView.alpha = 1;
@@ -72,13 +95,56 @@
   
 }
 
+#pragma like/dislike Actions
+
 - (IBAction)likeAction:(UIButton *)sender {
+    
+    ShibaCellTableViewCell *cell = (ShibaCellTableViewCell *)sender.superview.superview;
+    NSIndexPath *indexPath = [self.tableView indexPathForCell:cell];
+    Shiba *shiba = self.datasource[indexPath.row];
+    //     Get a reference to our posts
+    
+    Firebase *upvotesRef = [[Firebase alloc] initWithUrl: [NSString stringWithFormat:@"https://torrid-torch-679.firebaseio.com/ios/shibagram/shibas/%@/likes",shiba.uuid]];
+    NSLog(@"LIKE : %@", shiba.uuid);
+    [upvotesRef runTransactionBlock:^FTransactionResult *(FMutableData *currentData) {
+        
+        NSNumber *value = currentData.value;
+        if (currentData.value == [NSNull null]) {
+            value = 0;
+        }
+        [currentData setValue:[NSNumber numberWithInt:(1 + [value intValue])]];
+        shiba.likes = [NSNumber numberWithInt:(1 + [value intValue])];
+        [self.datasource replaceObjectAtIndex:indexPath.row withObject:shiba];
+        return [FTransactionResult successWithValue:currentData];
+    }];
+    [self.tableView reloadData];
 
     
 }
 
-- (IBAction)dislikeAction:(id)sender {
+- (IBAction)dislikeAction:(UIButton *)sender {
+    ShibaCellTableViewCell *cell = (ShibaCellTableViewCell *)sender.superview.superview;
+    NSIndexPath *indexPath = [self.tableView indexPathForCell:cell];
+    Shiba *shiba = self.datasource[indexPath.row];
+    //     Get a reference to our posts
+    
+    Firebase *upvotesRef = [[Firebase alloc] initWithUrl: [NSString stringWithFormat:@"https://torrid-torch-679.firebaseio.com/ios/shibagram/shibas/%@/dislikes",shiba.uuid]];
+     NSLog(@"DISLIKE : %@", shiba.uuid);
+    [upvotesRef runTransactionBlock:^FTransactionResult *(FMutableData *currentData) {
+        NSNumber *value = currentData.value;
+        if (currentData.value == [NSNull null]) {
+            value = 0;
+        }
+        [currentData setValue:[NSNumber numberWithInt:(1 + [value intValue])]];
+        shiba.dislikes = [NSNumber numberWithInt:(1 + [value intValue])];
+        [self.datasource replaceObjectAtIndex:indexPath.row withObject:shiba];
+        return [FTransactionResult successWithValue:currentData];
+    }];
+    [self.tableView reloadData];
+    
+    
 }
+
 
 #pragma mark - UITableView
 
@@ -94,23 +160,28 @@
     ShibaCellTableViewCell *cell =(ShibaCellTableViewCell*)[tableView dequeueReusableCellWithIdentifier:@"cell" forIndexPath:indexPath];
     
     Shiba *shiba = self.datasource[indexPath.row];
-    cell.LikesLabel.text = [NSString stringWithFormat:@"%@ likes", shiba.likes];
-    cell.DislikesLabel.text = [NSString stringWithFormat:@"%@ dislikes", shiba.dislikes];
-    cell.CaptionLabel.text = [NSString stringWithFormat:@"%@", shiba.caption];
+    cell.LikesLabel.text = [NSString stringWithFormat:@"%@", shiba.likes];
+    cell.DislikesLabel.text = [NSString stringWithFormat:@"%@", shiba.dislikes];
     
-//        cell.ImageView.image = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:shiba.imgURL]]];
-//    [cell.ImageView sd_setImageWithURL:[NSURL URLWithString:shiba.imgURL] placeholderImage:[UIImage imageNamed:@"shiba-overlay.png"]];
-    UIImage *shibaImg = [self decodeBase64ToImage:[NSString stringWithFormat:@"%@", shiba.imgURL]];
-    NSLog(@"%@ shibaImg", shibaImg);
-    cell.ImageView.image = [self decodeBase64ToImage:[NSString stringWithFormat:@"%@", shiba.imgURL]];
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    dateFormatter.locale = [[NSLocale alloc] initWithLocaleIdentifier:@"fr_FR"];
+    [dateFormatter setDateFormat:@"EEE dd/MM/YYYY, HH:mm"];
+    cell.dateLabel.text = [NSString stringWithFormat:@"%@", [dateFormatter stringFromDate:shiba.dateTime]];
+    
+
+    NSData *dataFromBase64=[[NSData alloc]initWithBase64EncodedString:shiba.imgURL options:NSDataBase64DecodingIgnoreUnknownCharacters];
+
+    UIImage *image=[UIImage imageWithData:dataFromBase64];
+    cell.ImageView.image =image;
+    cell.ImageBgView.image =image;
     
     return cell;
     
 }
 
+
 - (UIImage *)decodeBase64ToImage:(NSString *)strEncodeData {
     NSData *data = [[NSData alloc]initWithBase64EncodedString:strEncodeData options:NSDataBase64DecodingIgnoreUnknownCharacters];
-//    NSLog(@"%@ --------- Data", data);
     return [UIImage imageWithData:data];
 }
 
@@ -118,13 +189,7 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
-/*
-- (IBAction)shibaAction:(UIStoryboardSegue*)segue {
-    ShibaView* sv = [self.storyboard instantiateViewControllerWithIdentifier:@"shibaView"];
-    sv.delegate = self;
-    [self.navigationController presentViewController:sv animated:YES completion:nil];
-}
-*/
+
 - (IBAction)shibaDone:(UIStoryboardSegue*)segue {
     ShibaView* shibaView = (ShibaView*)segue.sourceViewController;
     [shibaView validate];

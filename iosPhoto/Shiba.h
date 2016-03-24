@@ -16,8 +16,8 @@
 @property(nonatomic,strong) NSString *imgURL;
 @property(nonatomic,strong) NSNumber *likes;
 @property(nonatomic,strong) NSNumber *dislikes;
-@property(nonatomic,strong) NSString *caption;
+@property(nonatomic,strong) NSDate *dateTime;
 
--(id)initWithUUID:(NSString*)uuid imgURL:(NSString*)imgUrl likes:(NSNumber*)likes dislikes:(NSNumber*)dislikes description:(NSString*)caption;
+-(id)initWithUUID:(NSString*)uuid imgURL:(NSString*)imgUrl likes:(NSNumber*)likes dislikes:(NSNumber*)dislikes dateTime:(NSString*)dateTime;
 
 @end

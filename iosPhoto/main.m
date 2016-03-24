@@ -3,7 +3,7 @@
 //  iosPhoto
 //
 //  Created by XING Lei on 02/03/2016.
-//  Copyright (c) 2016 XING Lei. All rights reserved.
+//  Copyright (c/Users/eleve/Documents/ios/ios-photo/iosPhoto/Base.lproj/Main.storyboard) 2016 XING Lei. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>

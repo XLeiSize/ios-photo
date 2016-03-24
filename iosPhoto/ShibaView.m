@@ -69,6 +69,7 @@ BOOL isFront;
     
     UIView* overlayView = [[UIView alloc] initWithFrame:self.picker.view.frame];
     overlayView.backgroundColor = [UIColor colorWithPatternImage:image];
+    overlayView.alpha=0.85;
     
     // Add camera button
     UIButton *cameraButton = [UIButton buttonWithType:UIButtonTypeCustom];
@@ -238,10 +239,18 @@ BOOL isFront;
     NSData *imageData = UIImageJPEGRepresentation(uploadImage, 0.9);
     NSString *imageString = [NSString base64StringFromData:imageData length:[imageData length]];
     NSString *uuid = [NSUUID UUID].UUIDString;
+    
+    NSDate *localDate = [NSDate date];
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc]init];
+    [dateFormatter setDateFormat:@"yyyy-MM-dd'T'HH:mm:ss.SSSZ"];
+    NSString *dateTimeString = [dateFormatter stringFromDate: localDate];
+    NSLog(@"%@", dateTimeString);
+    
     NSDictionary *shiba = @{
                             @"dislikes": @"0",
                             @"likes": @"0",
-                            @"imgURL":imageString
+                            @"imgURL":imageString,
+                            @"dateTime": dateTimeString
     };
     Firebase *shibasRef = [ref childByAppendingPath: uuid];
 

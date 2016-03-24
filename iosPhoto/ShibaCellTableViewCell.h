@@ -11,7 +11,8 @@
 @interface ShibaCellTableViewCell : UITableViewCell
 
 @property (weak, nonatomic) IBOutlet UIImageView *ImageView;
-@property (weak, nonatomic) IBOutlet UILabel *CaptionLabel;
+@property (weak, nonatomic) IBOutlet UIImageView *ImageBgView;
+@property (weak, nonatomic) IBOutlet UILabel *dateLabel;
 @property (weak, nonatomic) IBOutlet UILabel *LikesLabel;
 @property (weak, nonatomic) IBOutlet UILabel *DislikesLabel;
 
