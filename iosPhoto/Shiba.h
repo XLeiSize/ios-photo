@@ -7,16 +7,17 @@
 //
 
 #import <Foundation/Foundation.h>
-
+#import <Firebase/Firebase.h>
 
 
 @interface Shiba : NSObject
 
+@property(nonatomic,strong) NSString *uuid;
 @property(nonatomic,strong) NSString *imgURL;
 @property(nonatomic,strong) NSNumber *likes;
 @property(nonatomic,strong) NSNumber *dislikes;
 @property(nonatomic,strong) NSString *caption;
 
--(id)initWithImgUrl:(NSString*)imgUrl likes:(NSNumber*)likes dislikes:(NSNumber*)dislikes description:(NSString*)description;
+-(id)initWithUUID:(NSString*)uuid imgURL:(NSString*)imgUrl likes:(NSNumber*)likes dislikes:(NSNumber*)dislikes description:(NSString*)caption;
 
 @end

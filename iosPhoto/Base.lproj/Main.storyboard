@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9532" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="s8m-fO-9kU">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9532" systemVersion="14F1713" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="s8m-fO-9kU">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
@@ -36,7 +36,7 @@
                                                     </constraints>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AlZ-fx-KaJ">
-                                                    <rect key="frame" x="162" y="17" width="150" height="21"/>
+                                                    <rect key="frame" x="162" y="53" width="150" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" red="0.8955176767676768" green="0.13303398989308735" blue="0.21637043838333714" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
@@ -48,11 +48,25 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="v7A-0c-aiF">
-                                                    <rect key="frame" x="8" y="17" width="146" height="21"/>
+                                                    <rect key="frame" x="16" y="53" width="155" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" red="0.23238171768012261" green="0.96154908459595956" blue="0.43011379012875167" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="neE-5K-ww1">
+                                                    <rect key="frame" x="264" y="8" width="48" height="48"/>
+                                                    <state key="normal" backgroundImage="dislike"/>
+                                                    <connections>
+                                                        <action selector="dislikeAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="t5O-Se-bgd"/>
+                                                    </connections>
+                                                </button>
+                                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QGo-yD-o8P">
+                                                    <rect key="frame" x="16" y="8" width="48" height="48"/>
+                                                    <state key="normal" backgroundImage="like"/>
+                                                    <connections>
+                                                        <action selector="likeAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="wVp-Jc-XRm"/>
+                                                    </connections>
+                                                </button>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="fFk-aT-Aqr" firstAttribute="width" secondItem="nIR-Wz-1cs" secondAttribute="width" id="6dq-JQ-v1K"/>
@@ -82,7 +96,7 @@
                                 </constraints>
                                 <state key="normal" title="Shiba"/>
                                 <connections>
-                                    <segue destination="iM3-oy-UFc" kind="modal" id="QH7-BI-HXc"/>
+                                    <segue destination="iM3-oy-UFc" kind="modal" id="9Ew-sU-oqf"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -147,6 +161,7 @@
                             <constraint firstItem="p92-b5-bd9" firstAttribute="width" secondItem="mQS-Mi-POf" secondAttribute="width" id="j9G-Mm-Zqy"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="yDC-l6-3i9"/>
                     <connections>
                         <outlet property="imageOverlayView" destination="p92-b5-bd9" id="n0s-Qg-dVd"/>
                         <outlet property="imageView" destination="cir-vS-oZQ" id="WlF-AT-0oI"/>
@@ -155,7 +170,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="f7w-R9-4rz" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="MOp-aE-BEG" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="130" y="1001"/>
+            <point key="canvasLocation" x="749" y="239"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="aqb-nu-vkr">
@@ -174,5 +189,9 @@
             <point key="canvasLocation" x="-317.86666666666667" y="238.56"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="dislike" width="128" height="128"/>
+        <image name="like" width="128" height="128"/>
+    </resources>
     <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
 </document>

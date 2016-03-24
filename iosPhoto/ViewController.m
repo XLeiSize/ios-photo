@@ -48,13 +48,13 @@
 
 //LOAD DATA URL
 - (void)requestsShibas {
+    [self.activityIndicator startAnimating];
     // Get a reference to our posts
     Firebase *ref = [[Firebase alloc] initWithUrl: @"https://torrid-torch-679.firebaseio.com/ios/shibagram/shibas"];
     // Retrieve new posts as they are added to the database
     [ref observeEventType:FEventTypeChildAdded withBlock:^(FDataSnapshot *snapshot) {
         
-        Shiba *shiba = [[Shiba alloc] initWithImgUrl:snapshot.value[@"imgURL"] likes:snapshot.value[@"likes"] dislikes:snapshot.value[@"dislikes"] description:snapshot.value[@"description"]];
-        
+        Shiba *shiba = [[Shiba alloc] initWithUUID:snapshot.key imgURL:snapshot.value[@"imgURL"] likes:snapshot.value[@"likes"] dislikes:snapshot.value[@"dislikes"] description:snapshot.value[@"description"]];
         [self.datasource addObject:shiba];
         
     }];
@@ -72,6 +72,13 @@
   
 }
 
+- (IBAction)likeAction:(UIButton *)sender {
+
+    
+}
+
+- (IBAction)dislikeAction:(id)sender {
+}
 
 #pragma mark - UITableView
 
